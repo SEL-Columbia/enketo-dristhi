@@ -1,7 +1,6 @@
 /*global mockForms2, mockInstances*/
 
-define( [ 'enketo', 'androidContext' ], function( enketo, androidContext ) {
-
+define( [ 'ziggy/FormDataController' ], function( formDataController ) {
     /**
      * [FormDataController description]
      * @param {{instanceId: string, entityId: string}} params [description]
@@ -10,13 +9,7 @@ define( [ 'enketo', 'androidContext' ], function( enketo, androidContext ) {
     function FormDataController( params ) {
         params = params || {};
         var originalInstanceId = params.instanceId || null;
-        var formDataRepository = new enketo.FormDataRepository();
-        var controller = new enketo.FormDataController(
-            new enketo.EntityRelationshipLoader(),
-            new enketo.FormDefinitionLoader(),
-            new enketo.FormModelMapper( formDataRepository, new enketo.SQLQueryBuilder( formDataRepository ), new enketo.IdFactory( new enketo.IdFactoryBridge() ) ),
-            formDataRepository, new enketo.FormSubmissionRouter() );
-
+        var controller = formDataController;
         /**
          * Gets instance as JSON from Dristhi DB - Should this be asynchronous?
          * @return {?*} Form Data JSON object

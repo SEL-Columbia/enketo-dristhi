@@ -12,10 +12,11 @@ requirejs.config( {
         jquery: '../../lib/enketo-core/lib/jquery',
         bootstrap: '../../lib/enketo-core/lib/bootstrap',
         Modernizr: '../../lib/enketo-core/lib/Modernizr',
-        enketo: '../../build/mock/enketo.mock', //replace with real one in dristhi app
-        androidContext: '../../build/mock/androidcontext.mock', //replace with real one in dristhi app
-        mockForms: '../../build/mock/transforms.mock', //not required in dristhi app
-        mockInstances: '../../build/mock/instances.mock' //not required in dristhi app
+        //enketo: '../../build/mock/enketo.mock', //replace with real one in dristhi app
+        ziggy: '../../lib/ziggy/ziggy/src' //replace with real one in production
+        //        androidContext: '../../build/mock/androidcontext.mock' //replace with real one in dristhi app
+        //        mockForms: '../../build/mock/transforms.mock', //not required in dristhi app
+        //        mockInstances: '../../build/mock/instances.mock' //not required in dristhi app
     },
     shim: {
         'xpath': {
@@ -35,20 +36,21 @@ requirejs.config( {
         },
         'Modernizr': {
             exports: 'Modernizr'
-        },
-        // not required in dristhi app:
-        'mockForms': {
-            exports: 'mockForms'
-        },
-        // not required in dristhi app:
-        'mockInstances': {
-            exports: 'mockInstances'
         }
+        //        ,
+        // not required in dristhi app:
+        //        'mockForms': {
+        //            exports: 'mockForms'
+        //        },
+        //        // not required in dristhi app:
+        //        'mockInstances': {
+        //            exports: 'mockInstances'
+        //        }
     }
 } );
 
-requirejs( [ 'enketo-js/Form', 'FormDataController', 'enketo-json/FormModelJSON', 'gui', 'util', 'androidContext', 'jquery', 'plugins' ],
-    function( Form, FormDataController, FormModelJSON, gui, util, androidContext, $ ) {
+requirejs( [ 'enketo-js/Form', 'FormDataController', 'enketo-json/FormModelJSON', 'gui', 'util', 'jquery', 'plugins' ],
+    function( Form, FormDataController, FormModelJSON, gui, util, $ ) {
         'use strict';
         var modelXMLStr, existingInstanceJSON, instanceToEditXMLStr, loadErrors, modelJSON, form, instanceId,
             queryParams = util.getAllQueryParams(),
