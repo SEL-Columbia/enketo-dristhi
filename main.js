@@ -80,7 +80,7 @@ requirejs( [ 'enketo-js/Form', 'FormDataController', 'enketo-json/FormModelJSON'
         form = new Form( 'form.or:eq(0)', modelXMLStr, instanceToEditXMLStr );
 
         loadErrors = form.init();
-        console.log( 'load errors', loadErrors );
+        console.log( 'load errors: ' + loadErrors );
 
         //controller for submission of data to drishti
         $( document ).on( 'click', 'button#submit-form:not(:disabled)', function( event ) {
